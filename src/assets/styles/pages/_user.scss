@@ -1,0 +1,348 @@
+@import "../utils/variables";
+
+.profile {
+  &__center {
+    max-width: 825px;
+    margin: 0 auto;
+  }
+
+  &__menu {
+    position: fixed;
+  }
+
+  &__container {
+    margin-left: 220px;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: $c-grey-middle;
+    margin-bottom: 8px;
+  }
+}
+
+.profile-menu {
+  width: 180px;
+  border: 1px solid $c-border-main;
+  border-radius: 4px;
+  background: $c-white;
+
+  &__link {
+    display: block;
+    padding: 15px 0;
+    border-left: 2px solid transparent;
+    text-align: center;
+    color: $c-text-grey;
+    border-top: 1px solid $c-border-main;
+    cursor: pointer;
+
+    &:first-child {
+      border-top-width: 0;
+    }
+
+    &:hover {
+      color: $c-blue-main;
+      background-color: $c-blue-transparent;
+    }
+  }
+}
+
+.profile-pane {
+  padding: 36px 36px 12px 36px;
+  background: $c-white;
+  border-radius: 4px;
+  border: 1px solid $c-border-main;
+  margin-bottom: 24px;
+
+  &__title {
+    font-size: 16px;
+    font-family: $f-gothapro;
+    margin-bottom: 28px;
+  }
+
+}
+
+.profile-image {
+  float: left;
+  width: 140px;
+
+  &__avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 5px solid $c-white;
+    box-shadow: $s-popover;
+    margin-bottom: 12px;
+  }
+
+  &__edit {
+    width: 96px;
+    text-align: center;
+    color: $c-blue-main;
+    cursor: pointer;
+
+    &:hover {
+      color: $c-blue-dark;
+    }
+  }
+}
+
+.profile-info {
+  overflow: hidden;
+  border-left: 1px solid $c-border-main;
+  padding: 0 0 0 36px;
+  margin-bottom: 24px;
+
+  &__name {
+    font-size: 20px;
+    margin-bottom: 36px;
+  }
+}
+
+.profile-details {
+  &__section {
+    margin-bottom: 20px;
+  }
+
+  &__detail {
+    margin-bottom: 4px;
+  }
+
+  &__text-trigger {
+    cursor: pointer;
+    color: $c-blue-main;
+    display: inline-block;
+    margin-top: 16px;
+
+    &:hover {
+      color: $c-blue-dark;
+    }
+  }
+}
+
+.user-thumbs {
+  margin-right: -18px;
+  padding: 26px 0 0;
+  margin-bottom: 26px;
+  border-top: 1px solid $c-border-main;
+
+  &__label {
+    margin-bottom: 4px;
+  }
+
+  &__thumb {
+    display: inline-block;
+    margin: 0 8px 4px 0;
+    vertical-align: top;
+  }
+
+  &__trigger {
+    cursor: pointer;
+    color: $c-blue-main;
+
+    &:hover {
+      color: $c-blue-dark;
+    }
+  }
+}
+
+.user-heads {
+  padding: 26px 0 0;
+  margin-bottom: 26px;
+  border-top: 1px solid $c-border-main;
+
+  &__label {
+    margin-bottom: 4px;
+  }
+}
+
+.user-head {
+  &__thumb {
+    float: left;
+    margin: 0 10px 4px 0;
+  }
+
+  &__info {
+    overflow: hidden;
+    padding-top: 8px;
+  }
+
+  &__name {
+    margin-bottom: 4px;
+  }
+
+  &__position {
+    font-size: 12px;
+    color: $c-text-grey;
+  }
+}
+
+.user-thumb {
+  position: relative;
+  display: inline-block;
+
+  &__avatar {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border: 5px solid $c-white;
+    transition: 0.2s;
+  }
+
+  &__tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin: 0 0 30px -100px;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: -20px;
+      height: 20px;
+      width: 100%;
+      content: "";
+    }
+  }
+
+  &:hover {
+    .user-thumb__avatar {
+      box-shadow: $s-popover;
+    }
+
+    .user-thumb__tooltip {
+      opacity: 1;
+      visibility: visible;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+  }
+}
+
+.thumb-tooltip {
+  width: 210px;
+  padding: 24px 24px 12px;
+  box-shadow: $s-popover;
+  background: $c-white;
+  border-radius: 3px;
+  opacity: 0;
+  visibility: hidden;
+
+  &::before {
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 14px;
+    height: 14px;
+    margin: 0 0 0 -7px;
+    display: block;
+    background: $c-white;
+    box-shadow: -3px 3px 5px rgba($c-black, .05);
+    transform: rotate(-45deg);
+    z-index: 0;
+    content: "";
+  }
+
+  &__paragraph {
+    margin-bottom: 12px;
+  }
+}
+
+.thumb-social {
+  margin: 0 -16px 12px 0;
+  padding-top: 6px;
+
+  &__link {
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: top;
+  }
+
+  &__icon {
+    fill: $c-text-disabled;
+    vertical-align: top;
+
+    &:hover {
+      fill: $c-blue-light;
+    }
+  }
+}
+
+.profile-contacts {
+  margin-bottom: 24px;
+
+  &__link {
+    margin-bottom: 2px;
+  }
+}
+
+.profile-contact {
+  display: block;
+  color: $c-text-main;
+
+  &__iconbar {
+    float: left;
+    margin: 8px 36px 0 0;
+  }
+
+  &__icon {
+    fill: $c-text-disabled;
+  }
+
+  &__line {
+    float: left;
+    width: 328px;
+    height: 36px;
+    margin-bottom: 4px;
+    position: relative;
+    //border: 1px solid $c-border-main;
+    margin-right: 36px;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    display: block;
+    width: 110px;
+    text-align: right;
+    color: $c-text-disabled;
+  }
+
+  &__value {
+    display: block;
+    margin: 8px 0 0 113px;
+  }
+
+  &__controls {
+    float: left;
+    width: 92px;
+    padding-top: 8px;
+  }
+
+  &__unchain {
+    float: right;
+    width: 19px;
+    margin-top: 6px;
+  }
+
+  &__unchain-icon {
+    stroke: $c-text-disabled;
+    cursor: pointer;
+
+    &:hover {
+      stroke: $c-red-main;
+    }
+  }
+
+  &:hover {
+    .profile-contact__icon {
+      fill: $c-blue-light;
+    }
+  }
+}
+
+
+
+
+

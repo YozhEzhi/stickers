@@ -1,0 +1,378 @@
+@import "../utils/variables";
+
+// Required for <Sticky /> component:
+.sticky {
+  top: 60px !important;
+}
+
+// First div with <Sticky /> element:
+.listing-wrapper > div:first-child {
+  font-weight: bold;
+  position: relative;
+  z-index: 10;
+}
+
+@import "../utils/variables";
+
+.table {
+  color: $c-grey-main;
+  font-size: 12px;
+  width: 100%;
+
+  &::after {
+    display: block;
+    font-size: 0;
+    clear: both;
+    content: " ";
+    height: 0;
+    visibility: hidden;
+  }
+
+  &-th {
+    padding: 6px 16px;
+  }
+}
+
+.table-row {
+  align-items: center;
+  background: $c-white;
+  border-bottom: 1px solid $c-table-border;
+  height: $table-row-height;
+  display: flex;
+  transition: color 0.3s;
+  width: 100%;
+
+  &:hover {
+    color: $c-tr-hovered;
+
+    .table-cell__id,
+    .table-cell__broker,
+    .table-cell__price,
+    .table-cell__dealer {
+      border-bottom: 1px dashed;
+    }
+
+    .table-cell__dot {
+      opacity: 0.6;
+    }
+  }
+}
+
+.table-th-wrapper {
+  background: $c-grey-light;
+  border: 1px solid $bd-main;
+  height: 46px;
+}
+
+.table-heading,
+.table-body,
+.table-foot {
+  clear: both;
+}
+
+.table-cell {
+  background: $c-white;
+
+  &__id,
+  &__broker,
+  &__price,
+  &__dealer {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.table-cell,
+.table-head {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 6px 16px;
+  position: relative;
+}
+
+.table-col {
+  &__checkbox {
+    flex-basis: 52px;
+  }
+
+  &__color {
+    position: relative;
+    flex-basis: 5px;
+    z-index: 1;
+  }
+
+  &__id {
+    flex-basis: 80px;
+  }
+
+  &__img {
+    flex-basis: 40px;
+  }
+
+  &__name {
+    flex-basis: 160px;
+  }
+
+  &__category {
+    flex-basis: 140px;
+  }
+
+  &__location {
+    flex-basis: 70px;
+  }
+
+  &__price,
+  &__profit {
+    flex-basis: 100px;
+  }
+
+  &__broker,
+  &__dealer {
+    flex-basis: 110px;
+  }
+
+  &__created,
+  &__updated {
+    flex-basis: 65px;
+  }
+
+  &__watched {
+    flex-basis: 40px;
+  }
+
+  &__like,
+  &__comments {
+    flex-basis: 45px;
+  }
+
+  &__actions {
+    flex-basis: 75px;
+  }
+}
+
+.table-dot {
+  background: $c-table-circles-bg;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+}
+
+// All table headings:
+.table-th {
+  &__icon {
+    fill: $c-table-nonactive-item;
+    position: relative;
+    top: 2px;
+    transition: 0.3s;
+  }
+}
+
+// All table cells:
+.table-cell {
+  $this: &;
+
+  &__span {
+    display: inline-block;
+    height: 47px;
+    overflow: hidden;
+  }
+
+  &__comments {
+    align-items: center;
+    background: $c-table-circles-bg;
+    border-radius: 50%;
+    color: $c-white;
+    display: flex;
+    height: 24px;
+    line-height: 1;
+    justify-content: center;
+    width: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__action-left {
+    min-height: 40px;
+    padding: 11px 0 0 16px;
+
+    .table-row:hover & #{$this}__list {
+      opacity: 0.6;
+    }
+  }
+
+  &__action-right {
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 76px;
+  }
+
+  &__list {
+    cursor: pointer;
+    fill: $c-black;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  &__dot {
+    background: $c-black;
+    border-radius: 50%;
+    display: inline-block;
+    height: 5px;
+    margin: 0 1px;
+    opacity: 0.12;
+    transition: 0.3s;
+    width: 5px;
+    vertical-align: top;
+  }
+}
+
+.table-status {
+  height: calc(100% + 1px);
+  left: 0;
+  position: absolute;
+  top: -1px;
+  width: 5px;
+
+  &_posted {
+    background: $c-blue-main;
+  }
+
+  &_draft {
+    background: $bg-yellow;
+  }
+
+  &_moderation {
+    background: $bg-grey-main;
+  }
+
+  &_rejected {
+    background: $bg-red-main;
+  }
+
+  &_preparatory {
+    background: $bg-lime-green;
+  }
+
+  &_sold {
+    background: $bg-green;
+  }
+
+  &_withdrawn {
+    background: $bg-brown;
+  }
+}
+
+// Table footer:
+.table-footer {
+  align-items: center;
+  background: $c-white;
+  border-bottom: 1px solid $c-table-border;
+  display: flex;
+  height: $table-row-height;
+  justify-content: center;
+  margin: 0 0 12px;
+  position: relative;
+
+  &__items {
+    color: $c-grey-main;
+  }
+
+  &__items-count {
+    color: $c-table-active-text;
+  }
+}
+
+// Table tooltip:
+.table-tooltip {
+  position: relative;
+  z-index: 1;
+
+  &__content {
+    background: $c-white;
+    border-radius: 4px;
+    box-shadow: $s-popover;
+    cursor: default;
+    left: 50%;
+    opacity: 0;
+    padding: 4px;
+    pointer-events: none;
+    position: absolute;
+    top: -85px;
+    transform: scale3d(0.3, 0.3, 0.3) translateX(-166%);
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+
+    &-img {
+      display: block;
+      max-height: none;
+      max-width: none;
+    }
+  }
+
+  &:hover {
+    opacity: 0;
+    z-index: 101;
+
+    ~ .table-tooltip__content {
+      pointer-events: auto;
+      opacity: 1;
+      transform: translateX(-50%) translate3d(0, 0, 0);
+    }
+  }
+}
+
+.table-cover {
+  height: 300px;
+  text-align: center;
+  background: $bg-white;
+  border-bottom: 1px solid $bd-main;
+  position: relative;
+
+  &__not-found {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    margin: -8px 0 0 -150px;
+  }
+}
+
+.sort-trigger {
+  cursor: pointer;
+  position: relative;
+  padding-right: 9px;
+
+  &:hover {
+    color: $c-blue-main;
+  }
+
+  &__pointer {
+    color: $c-blue-main;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.create-new-link {
+  font-size: 20px;
+  color: $c-grey-middle;
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: bottom;
+
+  &:hover {
+    color: $c-blue-main;
+    text-decoration: none;
+  }
+}
