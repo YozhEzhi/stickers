@@ -1,6 +1,6 @@
 import React from 'react';
 import 'react-notifications/lib/notifications.css';
-import StickersContainer from './Stickers/StickersContainer';
+import StickersContainer from './StickersContainer';
 
 export default function Header() {
   return (

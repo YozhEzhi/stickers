@@ -1,21 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import Header from 'components/Header';
+import Stickers from 'components/Stickers';
 import Icons from 'components/Icons';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <main>
         <Icons />
-        <Header />
+        <Stickers />
         <section className="content" id="content">
           {this.props.children}
         </section>
       </main>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {state};
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({}, dispatch);
 }
 
 App.propTypes = {
@@ -28,3 +38,6 @@ App.propTypes = {
 App.defaultProps = {
   children: null,
 };
+
+const Connected = connect(mapStateToProps, mapDispatchToProps)(App);
+export {Connected as App};
