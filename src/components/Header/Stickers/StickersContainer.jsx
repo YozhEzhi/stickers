@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from 'actions/header/stickersActions';
+import * as actions from 'actions/stickersActions';
 import StickersWrapper from './StickersWrapper';
 
 function getActiveStickers(obj) {
@@ -11,7 +11,7 @@ function getActiveStickers(obj) {
 
 function mapStateToProps(state) {
   return {
-    active: state.header.stickers.active,
+    active: state.header.active,
     stickers: getActiveStickers(state.header.stickers),
   };
 }

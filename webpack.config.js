@@ -14,28 +14,7 @@ const cssProd = ExtractTextPlugin.extract({
   publicPath: '../',
 });
 
-const lessDev = ['style-loader', 'css-loader', 'less-loader', 'import-glob-loader'];
-const lessProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader', 'less-loader', 'import-glob-loader'],
-  publicPath: '../',
-});
-
-const lessModuleDev = [
-  'style-loader',
-  'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-  'less-loader',
-];
-
-const lessModuleProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'less-loader'],
-  publicPath: '../',
-});
-
 const cssConfig = dev ? cssDev : cssProd;
-const lessConfig = dev ? lessDev : lessProd;
-const lessModuleConfig = dev ? lessModuleDev : lessModuleProd;
 
 module.exports = {
   entry: './src/index.jsx',
@@ -86,15 +65,6 @@ module.exports = {
       {
         test: /\.(scss|css)$/,
         use: cssConfig,
-      },
-      {
-        test: /\.less$/,
-        exclude: path.resolve('./src/components'),
-        use: lessConfig,
-      },
-      {
-        test: /\.module.less$/,
-        use: lessModuleConfig,
       },
       {
         test: /\.(jpe?g|png|svg|gif)$/,

@@ -1,17 +1,5 @@
 import { combineReducers } from 'redux';
 
-import auth from 'components/pages/Auth/reducers/index';
-import header from 'reducers/header/headerReducer';
-import user from 'components/pages/User/reducers';
-import GB from './pages/GB/GBReducer';
-import deal from './deal';
-import editDealPage from './editDealPage';
+import header from 'reducers/header/stickersReducer';
 
-export default combineReducers({
-  auth,
-  header,
-  user,
-  GB,
-  deal,
-  editDealPage,
-});
+export default combineReducers({header});
