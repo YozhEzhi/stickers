@@ -3,8 +3,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const context = path.resolve(__dirname);
-
 const dev = process.env.NODE_ENV === 'development';
 
 const cssDev = ['style-loader', 'css-loader', 'sass-loader', 'import-glob-loader'];
@@ -32,14 +30,11 @@ module.exports = {
     historyApiFallback: true,
   },
 
-  devtool: dev ? 'eval' : false,
+  devtool: dev ? 'cheap-eval-source-map' : false,
 
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     modules: ['node_modules', 'src'],
-    alias: {
-      mezr: 'assets/js/mezr.min.js',
-    },
   },
 
   module: {
@@ -50,15 +45,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            plugins: [
-              'transform-react-jsx',
-              [
-                'react-css-modules',
-                {
-                  context,
-                },
-              ],
-            ],
+            plugins: ['transform-react-jsx'],
           },
         },
       },
@@ -73,10 +60,6 @@ module.exports = {
       {
         test: /\.(woff2?|ttf|eot)$/,
         use: 'file-loader?name=fonts/[name].[ext]',
-      },
-      {
-        test: /mezr\.min\.js$/,
-        use: 'imports-loader?this=>window',
       },
     ],
   },

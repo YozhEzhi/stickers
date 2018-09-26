@@ -5,12 +5,12 @@
 
   &__overlay {
     background: $c-sticker-overlay;
-    height: calc(100vh - #{$h-header});
+    height: 100vh;
     left: 0;
     overflow: auto;
     padding: 6px 0;
     position: absolute;
-    top: $h-header;
+    top: 0;
     width: 100%;
     z-index: 2;
   }

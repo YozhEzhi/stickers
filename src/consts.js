@@ -1,0 +1,2 @@
+export const SET_STICKERS = 'SET_STICKERS';
+export const STICKERS_UPDATED = 'STICKERS_UPDATED';
