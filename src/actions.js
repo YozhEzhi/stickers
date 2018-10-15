@@ -1,36 +1,27 @@
-import ajax from 'utils/ajax';
-import {SET_STICKERS} from './consts';
+import {ADD, DISABLE, ENABLE, SET_ORDER} from './consts';
 
-function fetchStickers(dispatch) {
-    ajax.post('tools/stiker/').then(data => {
-        dispatch({
-            type: SET_STICKERS,
-            payload: data.ANSWER,
-        });
-    });
-}
+export const addSticker = (text, color) => dispatch => dispatch({
+    type: ADD,
+    payload: {
+        color,
+        date: new Date().toLocaleString(),
+        id: Math.random().toString(36).substr(2, 5),
+        name: 'YozhEzhi',
+        text,
+    },
+});
 
-export const addSticker = (text, color) => dispatch => {
-    ajax.post('tools/stiker/add/', {COLOR: color, TEXT: text}).then(() =>
-        fetchStickers(dispatch),
-    );
-};
+export const removeSticker = id => dispatch => dispatch({
+    type: DISABLE,
+    payload: {id},
+});
 
-export const removeSticker = id => dispatch => {
-    ajax.post(`tools/stiker/${id}/delete/`).then(() => fetchStickers(dispatch));
-};
+export const restoreSticker = id => dispatch => dispatch({
+    type: ENABLE,
+    payload: {id},
+});
 
-export const restoreSticker = id => dispatch => {
-    ajax.post(`tools/stiker/${id}/restore/`).then(() =>
-        fetchStickers(dispatch),
-    );
-};
-
-export const updateStickersOrder = sortedIds => dispatch => {
-    ajax.post('tools/stiker/', {SORT: sortedIds}).then(data => {
-        dispatch({
-            type: SET_STICKERS,
-            payload: data.ANSWER,
-        });
-    });
-};
+export const updateStickersOrder = sortedIds => dispatch => dispatch({
+    type: SET_ORDER,
+    payload: {sortedIds},
+});

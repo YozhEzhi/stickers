@@ -4,8 +4,9 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import 'react-notifications/lib/notifications.css';
 
+import Icons from 'components/Icons';
 import StickerList from './StickerList';
-import * as actions from '../../actions';
+import * as actions from '../actions';
 
 function StickersWrapper(props) {
     const {
@@ -18,6 +19,7 @@ function StickersWrapper(props) {
 
     return (
         <div className="stickers">
+            <Icons />
             <StickerList
                 addSticker={addSticker}
                 removeSticker={removeSticker}

@@ -1,2 +1,4 @@
-export const SET_STICKERS = 'SET_STICKERS';
-export const STICKERS_UPDATED = 'STICKERS_UPDATED';
+export const ADD = 'ADD';
+export const DISABLE = 'DISABLE';
+export const ENABLE = 'ENABLE';
+export const SET_ORDER = 'SET_ORDER';

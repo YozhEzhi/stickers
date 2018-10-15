@@ -5,19 +5,20 @@ import Icon from 'components/Icon';
 
 export default function Sticker(props) {
     const {
-        DATE_CREATE_TEXT: date,
+        date,
         dragHandle,
-        ID: id,
-        NAME: name,
-        PREVIEW_TEXT: text,
-        PROPERTY_COLOR_VALUE: color,
+        id,
+        name,
+        text,
+        color,
         removeSticker,
     } = props;
 
     return (
         <div
             className="sticker__inner"
-            style={color && {backgroundColor: color}}>
+            style={color && {backgroundColor: color}}
+        >
             <div className="sticker__header clear">
                 <div className="sticker__name">{name}</div>
                 <div className="sticker__time">{date}</div>
@@ -30,7 +31,8 @@ export default function Sticker(props) {
                     onClick={() => removeSticker(id, text)}
                     role="button"
                     tabIndex={0}
-                    title="Снять стикер">
+                    title="Снять стикер"
+                >
                     <Icon icon="close" width="19" height="19" />
                 </div>
             </div>
@@ -40,11 +42,11 @@ export default function Sticker(props) {
 }
 
 Sticker.propTypes = {
-    DATE_CREATE_TEXT: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
     dragHandle: PropTypes.element.isRequired,
-    ID: PropTypes.string.isRequired,
-    NAME: PropTypes.string.isRequired,
-    PREVIEW_TEXT: PropTypes.string.isRequired,
-    PROPERTY_COLOR_VALUE: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
     removeSticker: PropTypes.func.isRequired,
 };

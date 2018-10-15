@@ -1,12 +1,16 @@
-import {SET_STICKERS} from './consts';
+import {ADD, DISABLE} from './consts';
 
 const stickers = (state = [], action) => {
+    const {payload = {}} = action;
+    const {id} = payload;
+
     switch (action.type) {
-        case SET_STICKERS:
-            return {
-                ...state,
-                stickers: action.payload,
-            };
+        case ADD:
+            return [...state, payload];
+
+        case DISABLE:
+            const items = state.filter(item => item.id !== id);
+            return [...items];
 
         default:
             return state;

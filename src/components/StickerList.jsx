@@ -53,15 +53,15 @@ export default class Stickers extends React.Component {
             {
                 stickers: arrayMove(this.state.stickers, oldIndex, newIndex),
             },
-            this.updateStickersOrderOnSerer,
+            this.updateStickersOrderOnServer,
         );
     };
 
     /**
      * Restores last 'removed' sticker's active param.
      */
-    updateStickersOrderOnSerer = () => {
-        const ids = this.state.stickers.map(item => item.ID);
+    updateStickersOrderOnServer = () => {
+        const ids = this.state.stickers.map(item => item.id);
         this.props.updateStickersOrder(ids);
     };
 
