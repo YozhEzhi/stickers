@@ -15,25 +15,16 @@ export default class StickerNew extends React.Component {
     };
   }
 
-  handleBackToColor = () => {
-    this.setState({ selectedColor: false });
-  };
+  handleBackToColor = () => this.setState({selectedColor: false});
 
-  handleCancelCreation = () => {
-    this.setState({ chooseColorStep: false });
-  };
+  handleCancelCreation = () => this.setState({chooseColorStep: false});
 
-  handleCreateNew = () => {
-    this.setState({ chooseColorStep: true });
-  };
+  handleCreateNew = () => this.setState({chooseColorStep: true});
 
-  handleResetState = () => {
-    this.setState({ chooseColorStep: false, selectedColor: false });
-  };
+  handleResetState = () => 
+    this.setState({chooseColorStep: false, selectedColor: false});
 
-  handleSubmitColor = (selectedColor) => {
-    this.setState({ selectedColor });
-  };
+  handleSubmitColor = (selectedColor) => this.setState({selectedColor});
 
   render() {
     const isChooseColorStep = this.state.chooseColorStep;
@@ -62,7 +53,6 @@ export default class StickerNew extends React.Component {
       );
     }
 
-    // Initial Stickers page state
     return (
       <CSSTransitionGroup
         transitionName="sticker"
@@ -74,7 +64,7 @@ export default class StickerNew extends React.Component {
         <div className="sticker">
           <div
             className="sticker__inner sticker__inner_empty"
-            onClick={() => this.handleCreateNew()}
+            onClick={this.handleCreateNew}
             role="button"
             tabIndex={0}
           >

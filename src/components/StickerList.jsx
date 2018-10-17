@@ -50,9 +50,7 @@ export default class Stickers extends React.Component {
 
     onSortEnd = ({oldIndex, newIndex}) => {
         this.setState(
-            {
-                stickers: arrayMove(this.state.stickers, oldIndex, newIndex),
-            },
+            {stickers: arrayMove(this.state.stickers, oldIndex, newIndex)},
             this.updateStickersOrderOnServer,
         );
     };
@@ -76,14 +74,12 @@ export default class Stickers extends React.Component {
         this.props.restoreSticker(id);
     };
 
-    notificationText = text => {
-        return (
-            <span>
-                Стикер снят{' '}
-                <span className="notification-sticker-text">{text}</span>
-            </span>
-        );
-    };
+    notificationText = text => (
+        <span>
+            Стикер снят{' '}
+            <span className="notification-sticker-text">{text}</span>
+        </span>
+    );
 
     /**
      * Adds new notification in notifications Set.
@@ -93,6 +89,7 @@ export default class Stickers extends React.Component {
     addNotification = (id, text) => {
         const {notifications} = this.state;
         this.count += 1;
+
         return this.setState({
             count: this.count,
             notifications: notifications.add({
@@ -118,15 +115,15 @@ export default class Stickers extends React.Component {
     /**
      * Set non active param for sticker.
      * Shows notification with ability to restore sticker.
-     * @param id - number
-     * @param text - string - text value of sticker
+     * @param id - number - ID.
+     * @param text - string - Text value.
      */
     handleRemoveSticker = (id, text) => {
         this.addNotification(id, text);
         this.props.removeSticker(id);
     };
 
-    generateStickers = () =>
+    renderStickers = () =>
         this.state.stickers.map((item, index) => (
             <Sticker
                 dragHandle={<DragHandle />}
@@ -137,32 +134,31 @@ export default class Stickers extends React.Component {
         ));
 
     render() {
-        const isStickersNotEmpty = this.state.stickers.length;
+        const {addSticker} = this.props;
+        const {notifications, stickers} = this.state;
 
         return (
             <div
                 className="stickers__overlay"
-                ref={c => {this.stickersRef = c}}
+                ref={node => {this.stickersRef = node}}
             >
-                <div className="container no-padding">
-                    {isStickersNotEmpty ? (
-                        <SortableList
-                            axis={'xy'}
-                            helperClass="sortable-helper"
-                            items={this.generateStickers()}
-                            onSortEnd={this.onSortEnd}
-                            transitionDuration={500}
-                            useDragHandle
-                        />
-                    ) : ('')}
-
-                    <StickerNew addSticker={this.props.addSticker} />
-
-                    <NotificationStack
-                        notifications={this.state.notifications.toArray()}
-                        onDismiss={instance => this.handleNotificationDismiss(instance)}
+                {stickers.length && (
+                    <SortableList
+                        axis={'xy'}
+                        helperClass="sortable-helper"
+                        items={this.renderStickers()}
+                        onSortEnd={this.onSortEnd}
+                        transitionDuration={500}
+                        useDragHandle
                     />
-                </div>
+                )}
+
+                <StickerNew addSticker={addSticker} />
+
+                <NotificationStack
+                    notifications={notifications.toArray()}
+                    onDismiss={instance => this.handleNotificationDismiss(instance)}
+                />
             </div>
         );
     }

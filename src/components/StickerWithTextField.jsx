@@ -18,7 +18,7 @@ export default class StickerWithTextField extends React.Component {
         resetState();
     };
 
-    handleChange = (value) => {
+    handleChange = ({target: {value}}) => {
         const saveBtn = document.querySelector('.js-save-sticker');
         this.textareaValue = value;
 
@@ -38,26 +38,22 @@ export default class StickerWithTextField extends React.Component {
                 >
                     <textarea
                         className="sticker__content sticker__content_textarea"
-                        onChange={event => this.handleChange(event.target.value)}
+                        onChange={this.handleChange}
                         placeholder="О чем вы хотели не забыть..."
                         ref={node => {this.textareaRef = node}}
                     />
 
                     <div className="sticker__footer">
-                    <div
-                        className="sticker__footer-item sticker__footer_left"
-                        onClick={() => this.props.backToColor(this.props.selectedColor)}
-                        role="button"
-                        tabIndex={0}
-                    >Назад</div>
-                
-                    <div
-                        className="sticker__footer-item sticker__footer_right disabled js-save-sticker"
-                        onClick={this.handleAddSticker}
-                        role="button"
-                        tabIndex={0}
-                    >Сохранить</div>
-                </div>
+                        <div
+                            className="sticker__footer-item sticker__footer_left"
+                            onClick={() => this.props.backToColor(this.props.selectedColor)}
+                        >Назад</div>
+                    
+                        <div
+                            className="sticker__footer-item sticker__footer_right disabled js-save-sticker"
+                            onClick={this.handleAddSticker}
+                        >Сохранить</div>
+                    </div>
                 </div>
             </div>
         );

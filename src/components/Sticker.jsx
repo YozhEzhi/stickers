@@ -23,14 +23,13 @@ export default function Sticker(props) {
                 <div className="sticker__name">{name}</div>
                 <div className="sticker__time">{date}</div>
             </div>
+
             <div className="sticker__header sticker__header-slide clear">
                 {dragHandle}
 
                 <div
                     className="sticker__trigger_remove"
                     onClick={() => removeSticker(id, text)}
-                    role="button"
-                    tabIndex={0}
                     title="Снять стикер"
                 >
                     <Icon icon="close" width="19" height="19" />

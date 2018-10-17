@@ -47,12 +47,11 @@ export default class StickerWithCircles extends React.Component {
                 <div
                     className="sticker__circle js-circle"
                     data-color={circleColors[i]}
-                    key={`sticker-circle-${i}`}
-                    onClick={event => this.handleChooseColor(event)}
-                    onMouseEnter={event => this.handleMouseOver(event)}
-                    onMouseLeave={event => this.handleMouseLeave(event)}
-                    role="button"
-                    tabIndex={0}>
+                    key={i}
+                    onClick={this.handleChooseColor}
+                    onMouseEnter={this.handleMouseOver}
+                    onMouseLeave={this.handleMouseLeave}
+                >
                     <Icon
                         className="sticker__checkbox"
                         icon="check"
@@ -79,9 +78,7 @@ export default class StickerWithCircles extends React.Component {
     handleChooseColor = event => {
         const btn = document.querySelector('.js-disabled');
         const isResolved = this.state.resolved;
-        const isElementSelected = event.currentTarget.classList.contains(
-            'selected',
-        );
+        const isElementSelected = event.currentTarget.classList.contains('selected');
 
         if (isResolved && isElementSelected) {
             // User unchecks checked color:
@@ -126,10 +123,11 @@ export default class StickerWithCircles extends React.Component {
         const color = this.selectedColor;
 
         return (
-            <div className="sticker" role="button" tabIndex={0}>
+            <div className="sticker">
                 <div
                     className="sticker__inner sticker__inner_new js-sticker-circles"
-                    style={{backgroundColor: color}}>
+                    style={{backgroundColor: color}}
+                >
                     <div className="sticker__circles-wrapper">
                         {this.buildCircles()}
                     </div>
@@ -137,19 +135,13 @@ export default class StickerWithCircles extends React.Component {
                     <div className="sticker__footer">
                         <div
                             className="sticker__footer-item sticker__footer_left"
-                            onClick={event => this.cancelCreation(event)}
-                            role="button"
-                            tabIndex={0}>
-                            Отмена
-                        </div>
+                            onClick={this.cancelCreation}
+                        >Отмена</div>
 
                         <div
                             className="sticker__footer-item sticker__footer_right disabled js-disabled"
                             onClick={this.handleSubmitColor}
-                            role="button"
-                            tabIndex={0}>
-                            Далее
-                        </div>
+                        >Далее</div>
                     </div>
                 </div>
             </div>

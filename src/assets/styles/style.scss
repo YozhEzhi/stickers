@@ -1,4 +1,6 @@
-@import "vendors/**/*.scss";
-@import "ui/ui";
-@import "common/common";
-@import "utils/helpers";
+@import "reset";
+@import "fonts";
+@import "base";
+@import "notifications";
+@import "stickers";
+@import "helpers";
