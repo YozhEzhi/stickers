@@ -8,28 +8,24 @@ import Icons from 'components/Icons';
 import StickerList from './StickerList';
 import * as actions from '../actions';
 
-function StickersWrapper(props) {
-    const {
-        addSticker,
-        removeSticker,
-        restoreSticker,
-        stickers,
-        updateStickersOrder,
-    } = props;
-
-    return (
-        <div className="stickers">
-            <Icons />
-            <StickerList
-                addSticker={addSticker}
-                removeSticker={removeSticker}
-                restoreSticker={restoreSticker}
-                stickers={stickers}
-                updateStickersOrder={updateStickersOrder}
-            />
-        </div>
-    );
-}
+const StickersWrapper = ({
+    addSticker,
+    removeSticker,
+    restoreSticker,
+    stickers,
+    updateStickersOrder,
+}) => (
+    <div className="stickers">
+        <Icons />
+        <StickerList
+            addSticker={addSticker}
+            removeSticker={removeSticker}
+            restoreSticker={restoreSticker}
+            stickers={stickers}
+            updateStickersOrder={updateStickersOrder}
+        />
+    </div>
+);
 
 StickersWrapper.propTypes = {
     addSticker: PropTypes.func.isRequired,

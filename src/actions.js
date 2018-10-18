@@ -5,6 +5,7 @@ export const addSticker = (text, color) => dispatch => dispatch({
     payload: {
         color,
         date: new Date().toLocaleString(),
+        enabled: true,
         id: Math.random().toString(36).substr(2, 5),
         name: 'YozhEzhi',
         text,

@@ -1,18 +1,14 @@
 @import "variables";
 
 .stickers {
-  float: right;
+  background: $c-sticker-overlay;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
 
   &__overlay {
-    background: $c-sticker-overlay;
-    height: 100vh;
-    left: 0;
-    overflow: auto;
-    padding: 6px 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 2;
+    margin: 0 auto;
+    width: 80%;
   }
 }
 
@@ -78,28 +74,23 @@
     left: 0;
     line-height: 24px;
     overflow: auto;
-    position: absolute;
     padding: 0 24px;
-    top: 58px;
     width: 100%;
 
     &::placeholder {
       color: rgba($c-sticker-placeholder, 0.5);
     }
 
-    &_empty {
-      top: 177px;
-    }
-
     &_textarea {
       height: 74%;
+      position: absolute;
       top: 21px;
     }
   }
 
   &__plus {
     height: 44px;
-    margin: auto;
+    margin: auto auto 20px;
     position: relative;
     width: 44px;
 
@@ -137,7 +128,7 @@
     color: $c-white;
     cursor: pointer;
     font-size: 20px;
-    padding: 96px 0 0;
+    padding: 110px 0 0;
     transition: 0.3s;
 
     &:hover {
@@ -152,10 +143,10 @@
   border: 1px solid $c-sticker-bg-yellow;
   border-radius: 50%;
   cursor: pointer;
-  height: 70px;
+  height: 80px;
   position: relative;
   transition: 0.3s;
-  width: 70px;
+  width: 80px;
 
   &s-wrapper {
     display: flex;

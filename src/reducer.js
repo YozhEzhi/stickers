@@ -1,4 +1,4 @@
-import {ADD, DISABLE} from './consts';
+import {ADD, DISABLE, ENABLE} from './consts';
 
 const stickers = (state = [], action) => {
     const {payload = {}} = action;
@@ -8,9 +8,23 @@ const stickers = (state = [], action) => {
         case ADD:
             return [...state, payload];
 
+        case ENABLE:
+            const withEnabled = state.map(item => {
+                if (item.id === id) {
+                    item.enabled = true;
+                }
+                return item;
+            });
+            return [...withEnabled];
+
         case DISABLE:
-            const items = state.filter(item => item.id !== id);
-            return [...items];
+            const withDisabled = state.map(item => {
+                if (item.id === id) {
+                    item.enabled = false;
+                }
+                return item;
+            });
+            return [...withDisabled];
 
         default:
             return state;

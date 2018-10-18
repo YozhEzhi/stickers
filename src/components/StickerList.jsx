@@ -13,7 +13,7 @@ import Icon from 'components/Icon';
 import Sticker from './Sticker';
 import StickerNew from './StickerNew';
 
-const notificationTimeout = 5000;
+const NOTIFICATION_DISMIS_DELAY = 5000;
 const DragHandle = SortableHandle(() => (
     <div className="drag-handler">
         <Icon icon="menu" width="20" height="17" />
@@ -68,9 +68,7 @@ export default class Stickers extends React.Component {
      */
     handleRestoreSticker = id => {
         const {notifications} = this.state;
-        this.setState({
-            notifications: notifications.filter(item => item.key !== id),
-        });
+        this.setState({notifications: notifications.filter(item => item.key !== id)});
         this.props.restoreSticker(id);
     };
 
@@ -91,11 +89,10 @@ export default class Stickers extends React.Component {
         this.count += 1;
 
         return this.setState({
-            count: this.count,
             notifications: notifications.add({
                 action: 'Восстановить',
-                dismissAfter: notificationTimeout,
-                key: `notification-id-${this.count}`,
+                dismissAfter: NOTIFICATION_DISMIS_DELAY,
+                key: `notification-${this.count}`,
                 message: this.notificationText(text),
                 onClick: () => this.handleRestoreSticker(id),
             }),
@@ -106,11 +103,8 @@ export default class Stickers extends React.Component {
      * Deletes last notification from notifications Set.
      * @param notification - object
      */
-    handleNotificationDismiss = notification => {
-        this.setState({
-            notifications: this.state.notifications.delete(notification),
-        });
-    };
+    handleNotificationDismiss = notification =>
+        this.setState({notifications: this.state.notifications.delete(notification)});
 
     /**
      * Set non active param for sticker.
@@ -124,14 +118,16 @@ export default class Stickers extends React.Component {
     };
 
     renderStickers = () =>
-        this.state.stickers.map((item, index) => (
-            <Sticker
-                dragHandle={<DragHandle />}
-                key={index}
-                removeSticker={this.handleRemoveSticker}
-                {...item}
-            />
-        ));
+        this.state.stickers
+            .filter(item => item.enabled)
+            .map((item, index) => (
+                <Sticker
+                    dragHandle={<DragHandle />}
+                    key={index}
+                    removeSticker={this.handleRemoveSticker}
+                    {...item}
+                />
+            ));
 
     render() {
         const {addSticker} = this.props;
@@ -140,7 +136,7 @@ export default class Stickers extends React.Component {
         return (
             <div
                 className="stickers__overlay"
-                ref={node => {this.stickersRef = node}}
+                ref={node => this.stickersRef = node}
             >
                 {stickers.length && (
                     <SortableList
