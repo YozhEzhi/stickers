@@ -1,17 +1,16 @@
 @import "variables";
 
 @font-face {
-  font-family: "gothapro";
-  src: url("#{$f-path}/gothapro-medium.woff2") format("woff2"),
-       url("#{$f-path}/gothapro-medium.woff") format("woff");
+  font-family: "ptsans";
+  src: url("#{$f-path}/ptsans.woff2") format("woff2"),
+       url("#{$f-path}/ptsans.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "ptsans";
-  src: url("#{$f-path}/ptsans.woff2") format("woff2"),
-       url("#{$f-path}/ptsans.woff") format("woff");
+  font-family: "Notification";
+  src: url("#{$f-path}/notification.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

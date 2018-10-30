@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import 'react-notifications/lib/notifications.css';
 
 import Icons from 'components/Icons';
 import StickerList from './StickerList';
