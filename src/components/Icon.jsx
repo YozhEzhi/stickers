@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Icon = ({className, ...rest}) => (
+const Icon = ({ className, ...rest }) => (
     <svg {...rest} className={`icon ${className}`}>
         <use
             xlinkHref={`#icon_${rest.icon}`}

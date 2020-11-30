@@ -13,12 +13,12 @@ export default class StickerWithTextField extends React.Component {
 
     handleAddSticker = () => {
         if (!this.textareaValue) return;
-        const {addSticker, resetState, selectedColor} = this.props;
+        const { addSticker, resetState, selectedColor } = this.props;
         addSticker(this.textareaValue, selectedColor);
         resetState();
     };
 
-    handleChange = ({target: {value}}) => {
+    handleChange = ({ target: { value } }) => {
         const saveBtn = document.querySelector('.js-save-sticker');
         this.textareaValue = value;
 
@@ -31,16 +31,16 @@ export default class StickerWithTextField extends React.Component {
 
     render() {
         return (
-            <div className = "sticker sticker_new">
+            <div className="sticker sticker_new">
                 <div
-                    className = "sticker__inner sticker__inner_new js-sticker-new"
-                    style={{backgroundColor: this.props.selectedColor}}
+                    className="sticker__inner sticker__inner_new js-sticker-new"
+                    style={{ backgroundColor: this.props.selectedColor }}
                 >
                     <textarea
                         className="sticker__content sticker__content_textarea"
                         onChange={this.handleChange}
                         placeholder="О чем вы хотели не забыть..."
-                        ref={node => {this.textareaRef = node}}
+                        ref={node => { this.textareaRef = node }}
                     />
 
                     <div className="sticker__footer">
@@ -48,7 +48,7 @@ export default class StickerWithTextField extends React.Component {
                             className="sticker__footer-item sticker__footer_left"
                             onClick={() => this.props.backToColor(this.props.selectedColor)}
                         >Назад</div>
-                    
+
                         <div
                             className="sticker__footer-item sticker__footer_right disabled js-save-sticker"
                             onClick={this.handleAddSticker}

@@ -15,16 +15,16 @@ export default class StickerNew extends React.Component {
         };
     }
 
-    handleBackToColor = () => this.setState({selectedColor: false});
+    handleBackToColor = () => this.setState({ selectedColor: false });
 
-    handleCancelCreation = () => this.setState({chooseColorStep: false});
+    handleCancelCreation = () => this.setState({ chooseColorStep: false });
 
-    handleCreateNew = () => this.setState({chooseColorStep: true});
+    handleCreateNew = () => this.setState({ chooseColorStep: true });
 
     handleResetState = () =>
-        this.setState({chooseColorStep: false, selectedColor: false});
+        this.setState({ chooseColorStep: false, selectedColor: false });
 
-    handleSubmitColor = selectedColor => this.setState({selectedColor});
+    handleSubmitColor = selectedColor => this.setState({ selectedColor });
 
     render() {
         const isChooseColorStep = this.state.chooseColorStep;

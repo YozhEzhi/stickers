@@ -17,7 +17,7 @@ export default function Sticker(props) {
     return (
         <div
             className="sticker__inner"
-            style={color && {backgroundColor: color}}
+            style={color && { backgroundColor: color }}
         >
             <div className="sticker__header clear">
                 <div className="sticker__name">{name}</div>

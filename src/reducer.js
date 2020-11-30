@@ -1,8 +1,8 @@
-import {ADD, DISABLE, ENABLE} from './consts';
+import { ADD, DISABLE, ENABLE } from './consts';
 
 const stickers = (state = [], action) => {
-    const {payload = {}} = action;
-    const {id} = payload;
+    const { payload = {} } = action;
+    const { id } = payload;
 
     switch (action.type) {
         case ADD:

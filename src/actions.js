@@ -1,4 +1,4 @@
-import {ADD, DISABLE, ENABLE, SET_ORDER} from './consts';
+import { ADD, DISABLE, ENABLE, SET_ORDER } from './consts';
 
 export const addSticker = (text, color) => dispatch => dispatch({
     type: ADD,
@@ -14,15 +14,15 @@ export const addSticker = (text, color) => dispatch => dispatch({
 
 export const removeSticker = id => dispatch => dispatch({
     type: DISABLE,
-    payload: {id},
+    payload: { id },
 });
 
 export const restoreSticker = id => dispatch => dispatch({
     type: ENABLE,
-    payload: {id},
+    payload: { id },
 });
 
 export const updateStickersOrder = sortedIds => dispatch => dispatch({
     type: SET_ORDER,
-    payload: {sortedIds},
+    payload: { sortedIds },
 });

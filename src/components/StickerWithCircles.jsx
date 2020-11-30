@@ -85,20 +85,20 @@ export default class StickerWithCircles extends React.Component {
             getCircles().forEach(item => item.classList.remove('selected'));
             btn.classList.add('disabled');
             toggleCirclesClass(event, 'active');
-            this.setState({resolved: false});
+            this.setState({ resolved: false });
         } else if (isResolved && !isElementSelected) {
             // User checks another color with checked ones:
             this.setColor(event);
             btn.classList.remove('disabled');
             toggleCirclesClass(event, 'selected');
-            this.setState({resolved: true});
+            this.setState({ resolved: true });
         } else {
             // User checks not checked color:
             getCircles().forEach(item => item.classList.remove('active'));
             this.setColor(event);
             btn.classList.remove('disabled');
             toggleCirclesClass(event, 'selected');
-            this.setState({resolved: true});
+            this.setState({ resolved: true });
         }
     };
 
@@ -126,7 +126,7 @@ export default class StickerWithCircles extends React.Component {
             <div className="sticker">
                 <div
                     className="sticker__inner sticker__inner_new js-sticker-circles"
-                    style={{backgroundColor: color}}
+                    style={{ backgroundColor: color }}
                 >
                     <div className="sticker__circles-wrapper">
                         {this.buildCircles()}

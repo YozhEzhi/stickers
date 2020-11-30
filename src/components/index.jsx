@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import Icons from 'components/Icons';
 import StickerList from './StickerList';
@@ -14,17 +14,17 @@ const StickersWrapper = ({
     stickers,
     updateStickersOrder,
 }) => (
-    <div className="stickers">
-        <Icons />
-        <StickerList
-            addSticker={addSticker}
-            removeSticker={removeSticker}
-            restoreSticker={restoreSticker}
-            stickers={stickers}
-            updateStickersOrder={updateStickersOrder}
-        />
-    </div>
-);
+        <div className="stickers">
+            <Icons />
+            <StickerList
+                addSticker={addSticker}
+                removeSticker={removeSticker}
+                restoreSticker={restoreSticker}
+                stickers={stickers}
+                updateStickersOrder={updateStickersOrder}
+            />
+        </div>
+    );
 
 StickersWrapper.propTypes = {
     addSticker: PropTypes.func.isRequired,
@@ -34,7 +34,7 @@ StickersWrapper.propTypes = {
     stickers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = (stickers) => ({stickers});
+const mapStateToProps = (stickers) => ({ stickers });
 const mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
 export default connect(

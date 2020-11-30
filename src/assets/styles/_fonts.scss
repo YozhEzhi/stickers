@@ -2,8 +2,7 @@
 
 @font-face {
   font-family: "ptsans";
-  src: url("#{$f-path}/ptsans.woff2") format("woff2"),
-       url("#{$f-path}/ptsans.woff") format("woff");
+  src: url("#{$f-path}/ptsans.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
