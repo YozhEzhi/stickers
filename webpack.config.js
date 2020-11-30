@@ -36,20 +36,13 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
-                test: /\.(scss|css)$/,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader
-                },
-                {
-                    loader: "css-loader",
-                    options: {
-                        sourceMap: true,
-                        modules: true,
-                        localIdentName: "[local]___[hash:base64:5]"
-                    }
-                },
-                    "sass-loader"
-                ]
+
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.(woff2?|ttf|eot)$/,
