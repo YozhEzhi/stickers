@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {NotificationStack} from 'react-notification';
-import {OrderedSet} from 'immutable';
+import { NotificationStack } from 'react-notification';
+import { OrderedSet } from 'immutable';
 import {
     SortableContainer,
     SortableElement,
@@ -19,8 +19,8 @@ const DragHandle = SortableHandle(() => (
         <Icon icon="menu" width="20" height="17" />
     </div>
 ));
-const SortableItem = SortableElement(({value}) => <li className="sticker">{value}</li>);
-const SortableList = SortableContainer(({items}) => (
+const SortableItem = SortableElement(({ value }) => <li className="sticker">{value}</li>);
+const SortableList = SortableContainer(({ items }) => (
     <ul>
         {items.map((value, index) => (
             <SortableItem
@@ -45,12 +45,12 @@ export default class Stickers extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({stickers: nextProps.stickers});
+        this.setState({ stickers: nextProps.stickers });
     }
 
-    onSortEnd = ({oldIndex, newIndex}) => {
+    onSortEnd = ({ oldIndex, newIndex }) => {
         this.setState(
-            {stickers: arrayMove(this.state.stickers, oldIndex, newIndex)},
+            { stickers: arrayMove(this.state.stickers, oldIndex, newIndex) },
             this.updateStickersOrderOnServer,
         );
     };
@@ -67,8 +67,8 @@ export default class Stickers extends React.Component {
      * Restores last 'removed' sticker's active param.
      */
     handleRestoreSticker = id => {
-        const {notifications} = this.state;
-        this.setState({notifications: notifications.filter(item => item.key !== id)});
+        const { notifications } = this.state;
+        this.setState({ notifications: notifications.filter(item => item.key !== id) });
         this.props.restoreSticker(id);
     };
 
@@ -85,7 +85,7 @@ export default class Stickers extends React.Component {
      * @param text - string - text value of sticker
      */
     addNotification = (id, text) => {
-        const {notifications} = this.state;
+        const { notifications } = this.state;
         this.count += 1;
 
         return this.setState({
@@ -104,7 +104,7 @@ export default class Stickers extends React.Component {
      * @param notification - object
      */
     handleNotificationDismiss = notification =>
-        this.setState({notifications: this.state.notifications.delete(notification)});
+        this.setState({ notifications: this.state.notifications.delete(notification) });
 
     /**
      * Set non active param for sticker.
@@ -130,8 +130,8 @@ export default class Stickers extends React.Component {
             ));
 
     render() {
-        const {addSticker} = this.props;
-        const {notifications, stickers} = this.state;
+        const { addSticker } = this.props;
+        const { notifications, stickers } = this.state;
 
         return (
             <div
