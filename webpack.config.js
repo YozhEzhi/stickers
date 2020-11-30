@@ -12,7 +12,6 @@ const cssProd = ExtractTextPlugin.extract({
   publicPath: '../',
 });
 
-const cssConfig = dev ? cssDev : cssProd;
 
 module.exports = {
   entry: './src/index.jsx',
@@ -51,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: cssConfig,
+        use: dev ? cssDev : cssProd,
       },
       {
         test: /\.(jpe?g|png|svg|gif)$/,
